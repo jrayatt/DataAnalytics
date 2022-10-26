@@ -1,0 +1,40 @@
+-- 1. Find Number of rows in the table:
+-- (Help understand how large your data set is.)
+
+SELECT COUNT(*) AS number_of_rows
+FROM tablename?;
+
+-- 2. Find date range covered in the table:
+-- (Helps frame analysis and understand limitations.)
+
+SELECT
+MIN(created_at) AS first_created_at,
+MAX(created_at) AS last_created_at
+FROM tablename?;
+
+-- 3. Learn which values are most common in a column:
+-- (Easy way to understanding specific columns.)
+
+SELECT
+columnname,
+COUNT(*) AS times_repated
+FROM tablename?
+GROUP BY columnname
+ORDER BY times_repeated DESC;
+
+--4. See what trends look like:
+-- (is record-writing volume steady/decreasing/increasing?
+
+SELECT 
+DATE(created_at AS created_date,
+COUNT(*) AS records_on_date
+FROM tablename?
+GROUP BY DATE(created_at)
+ORDER BY DATE(created_at)
+
+--5. Return all columns, all records
+-- (Visual inspection of actual table contents
+
+SELECT *
+FROM Tablename?
+Limit 1000*
