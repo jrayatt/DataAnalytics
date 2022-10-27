@@ -1,3 +1,5 @@
+-------- THIS IS A REF GUIDE FOR YOUR FUTURE SCRIPTS "Tablename?" = Example = Replace. ---------
+
 -- 1. Find Number of rows in the table:
 -- (Help understand how large your data set is.)
 
@@ -30,11 +32,54 @@ DATE(created_at AS created_date,
 COUNT(*) AS records_on_date
 FROM tablename?
 GROUP BY DATE(created_at)
-ORDER BY DATE(created_at)
+ORDER BY DATE(created_at);
 
 --5. Return all columns, all records
 -- (Visual inspection of actual table contents
 
 SELECT *
 FROM Tablename?
-Limit 1000*
+Limit 1000*;
+
+
+----------------------------------------
+
+------ Querying a database with multiple tables to quantify statistics for business intel.
+------ (In this case customer and order infomation.)
+
+-- How many of a specific item?
+
+SELECT COUNT(Product)
+FROM JanSales?
+WHERE Product = "iPHONE?";
+
+-- Total revenue for each product sold in january* 
+
+SELECT SUM(Quantity)*PRICE AS "Revenu", Product FROM Jansales?
+GROUP BY Product
+ORDER BY Revenue;
+
+-- What was the average amount spent per account in Febuary?*
+
+SELECT SUM(Quantify*Price)/COUNT(Customer.acctnum) AS 'Avg Amount Spent per acct'
+FROM FebSALES
+LEFT JOIN customers 
+ON FebSales.OrderID = customer.order_id;
+
+-- Which location in New York* recived at least 3 orders in January*, and how many orders did they each recieve?
+
+SELECT Jansales?
+GROUP BY Location
+HAVING Number_of_orders >= 3 AND Location LIKE '%NY%';
+
+-- Which product brought in the most revenue in January and how much revenue did it bring in total?
+SELCT Product, SUM(Quantity*Price) AS Revenue
+FROM JanSales*
+GROUP BY Product
+ORDER BY Revenue DESC
+Limit 1;
+
+
+
+
+
